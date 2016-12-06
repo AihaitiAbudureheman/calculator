@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Title of the project-->
+    <title>Calculator Project</title>
+
+    <!--link to the external style sheet-->
+    <link rel="stylesheet" href="calculator.css">
+
+</head>
+
+<body>
+
+    <!--project header-->
+    <h1>JavaScript Calculator</h1>
+
+    <!--project subtitle-->
+    <p class="warning">Don't devide by zero !</p>
+
+    <!--container for calculators-->
+    <div id="calculator" class="calculator">
+
+        <!--clear button-->
+        <button id="clear" class="clear">C</button>
+
+        <!--this is the container for showing the calculation result-->
+        <div class="viewer" id="viewer">0</div>
+
+        <!--
+             All the buttons,
+             Here, data-num is the html custom attribute
+            -->
+        <button class="num" data-num="7">7</button>
+        <button class="num" data-num="8">8</button>
+        <button class="num" data-num="9">9</button>
+        <button data-ops="plus" class="ops">+</button>
+
+        <button class="num" data-num="4">4</button>
+        <button class="num" data-num="5">5</button>
+        <button class="num" data-num="6">6</button>
+        <button class="ops" data-ops="minus">-</button>
+
+        <button class="num" data-num="1">1</button>
+        <button class="num" data-num="2">2</button>
+        <button class="num" data-num="3">3</button>
+        <button class="ops" data-ops="times">*</button>
+
+        <button class="num" data-num="0">0</button>
+        <button class="num" data-num=".">.</button>
+        <button id="equals" class="equals" data-result="">=</button>
+        <button class="ops" data-ops="divide">/</button>
+    </div>
+    <!--End of container-->
+
+    <!--This is the reset button-->
+    <button id="reset" class="reset">Reset Calculator?</button>
+
+    <!--link to the external javaScript file-->
+    <script src="calculator.js"></script>
+
+
+</body>
+
+</html>

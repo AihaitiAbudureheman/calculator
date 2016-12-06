@@ -1,0 +1,388 @@
+html {
+    /*style the background with CSS gradient*/
+    background-image: -webkit-linear-gradient(white, green);
+    background-image: linear-gradient(white, green);
+    /*The style we did for the background will be fixed to the whole viewport*/
+    background-attachment: fixed;
+}
+
+/*style the body*/
+
+body {
+    color: #515557;
+    font: 100 16px "Source sans Pro", sans-serif;
+    margin: 0;
+    padding: 34px;
+    text-align: center;
+}
+
+/*style the header*/
+
+h1 {
+    font-weight: bolder;
+    margin: 0;
+    font-size: 300%;
+    animation-name: hone;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    position: relative;
+    top: 20px;
+}
+@keyframes hone {
+    from {
+        top: 20px;
+        opacity: 0;
+    }
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}
+.warning {
+    /*make gradient using two different colors using CSS gradient
+    here 45deg means the angle of the direction of the change
+    */
+    background: -webkit-linear-gradient(45deg, red 10%, #00BFF3 100%);
+    /*The change in style only affect the text*/
+    -webkit-background-clip: text;
+    /*make the text transparent*/
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    /*--all of the above css property will not be rendered in IEs-----*/
+    color: #8c5059;
+    font-weight: bolder;
+    /*This will align it to the center*/
+    margin: 0 auto 8em;
+    max-width: 9em;
+    opacity: 0;
+    animation-name: warn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+@keyframes warn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/*style the container for calculator*/
+
+.calculator {
+    font-size: 28px;
+    margin: 0 auto;
+    width: 12em;
+    animation-name: appear;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+    opacity: 0;
+    position: relative;
+    top: 100px;
+}
+@keyframes appear {
+    from {
+        opacity: 0;
+        top: 100px;
+    }
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+}
+.calculator::before, .calculator::after {
+    /*content will be empty before and after we using the calculator*/
+    content: " ";
+    /*all the element will be displayed like a table before
+    and after we using calculator*/
+    display: table;
+}
+
+/*This will not allow to put floating element on both side of calculator container */
+
+.calculator::after {
+    clear: both;
+}
+
+/*break animation*/
+
+.broken {
+    /*name and duration*/
+    -webkit-animation: broken 5s;
+    animation: broken 5s;
+    /*Cordinate value during movement:   x,y,z  */
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0);
+    opacity: 0;
+}
+.viewer {
+    color: red;
+    float: left;
+    line-height: 3em;
+    text-align: right;
+    /*in case the result is a very long number, replace the overflowed text with ellipsis:...*/
+    text-overflow: ellipsis;
+    /*hide the overflowed text */
+    overflow: hidden;
+    width: 7.5em;
+    height: 3em;
+}
+
+/*style the button*/
+
+button {
+    border: 1px solid #056605;
+    border-radius: 0px;
+    background: #056605;
+    color: #efeeef;
+    cursor: pointer;
+    float: left;
+    font: inherit;
+    margin: 0.3em;
+    width: 2em;
+    height: 2em;
+    /*transition for the hover effect*/
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+/*hover effects*/
+
+button:hover {
+    background: #300737;
+    border-radius: 1em;
+}
+
+/*when pressed there is no outline*/
+
+button:focus {
+    outline: 0;
+}
+
+/*after number buttons pressed...*/
+
+
+/*This property will not work on : firefox, IEs, safari...*/
+
+button:focus::after {
+    /*animation name and duration*/
+    -webkit-animation: zoom 3s;
+    animation: zoom 3s;
+    /*Number of times of the animation*/
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    /*With the value of 'both', the animation go forwards and then backwards to its original*/
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    /*set up the content for show up after button clicked*/
+    content: attr(data-num);
+    cursor: default;
+    font-size: 100px;
+    position: absolute;
+    top: -1.2em;
+    left: 50%;
+    text-align: center;
+    margin-left: -24px;
+    width: 48px;
+}
+
+/*This property will not work on : firefox, IEs, safari...*/
+
+
+/*after operaror buttons pressed*/
+
+.ops:focus::after {
+    /*set up the content for showing*/
+    content: attr(data-ops);
+    /*set up the position*/
+    width: 420px;
+    margin-left: -210px;
+    color: #efeeef;
+}
+
+/*This property will not work on : firefox, IEs, safari...*/
+
+
+/*after pressing equals button*/
+
+.equals:focus::after {
+    /*set up the content for showing*/
+    content: attr(data-result);
+    /*set up the position*/
+    margin-left: -300px;
+    width: 600px;
+    color: #ee1b73;
+}
+
+/*this is reset button*/
+
+.reset {
+    background: #ed081b;
+    color: #fcf6f7;
+    font-weight: 400;
+    font-size: 150%;
+    padding: 5em, 10em;
+    position: absolute;
+    top: -20em;
+    /*These two lines of codes will centerize it*/
+    width: 20%;
+    left: 40%;
+    height: 40px;
+    border-radius: 5px;
+}
+.reset:hover {
+    background: #c97874;
+    color: white;
+}
+
+/*show the reset button using fadein animation effect*/
+
+.show {
+    top: 20em;
+    -webkit-animation: fadein 5s;
+    animation: fadein 5s;
+}
+
+/*animation keyframes for animation named 'zoom' in different phase*/
+
+@-webkit-keyframes zoom {
+    0% {
+        /*set the scale to 0.2*/
+        -webkit-transform: scale(0.2);
+        transform: scale(0.2);
+        opacity: 1;
+    }
+    /*set the scale to 1*/
+    70% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/*animation keyframes for broken in different phase*/
+
+@-webkit-keyframes broken {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+    5% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    15% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    20% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    25% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    50% {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    70% {
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+    }
+}
+
+/*animation keyframes for broken in different phase*/
+
+@keyframes broken {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+    5% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    15% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    20% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    25% {
+        -webkit-transsform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    50% {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    70% {
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+        opacity: 1;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+    }
+    /*animation keyframes for fadein in different phase*/
+    @-webkit-keyframes fadein {
+        0% {
+            top: 20em;
+            opacity: 0;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    /*animation keyframes for fadein in different phase*/
+    @keyframes fadein {
+        0% {
+            top: 20em;
+            opacity: 0;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    /*Media rules: when the width less than 420px, use the following styles*/
+    @media(min-width:420px) {
+        .calculator {
+            width: 12em;
+        }
+        .viewer {
+            width: 8.5em;
+        }
+        button {
+            margin 0.5em;
+        }
+    }
+}
